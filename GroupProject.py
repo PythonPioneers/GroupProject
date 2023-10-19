@@ -62,7 +62,7 @@ if __name__ == '__main__':
                 print(f"No reviews found on page {x}")
                 break
     # Create an empty DataFrame
-    master_df = pd.DataFrame(columns=['title', 'rating', 'body'])
+    df = pd.DataFrame(columns=['title', 'rating', 'body'])
 
 for product_reviews in results:
     # Flatten the list of dictionaries
@@ -71,9 +71,16 @@ for product_reviews in results:
     # Create a DataFrame from the flattened reviews
     product_df = pd.DataFrame(flattened_reviews)
 
-    # Append the product DataFrame to the master DataFrame
-    master_df = pd.concat([master_df, product_df], ignore_index=True)
+# Append the product DataFrame to the master DataFrame
+df = pd.concat([df, product_df], ignore_index=True)
 
-# Print the master DataFrame
-print(master_df)
+# Remove everything before the space in "stars" in the 'title' column
+df['title'] = df['title'].str.split(' stars', n=1).str[1]
 
+# Remove " out of 5 stars" and format the numbers
+df['rating'] = df['rating'].str.replace(' out of 5 stars', '').str.replace('.0', '')
+
+# Rename the columns and reorder them
+df = df.rename(columns={'title': 'Title', 'body': 'Comment', 'rating': 'Rating'})
+
+print(df)

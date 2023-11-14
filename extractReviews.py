@@ -76,7 +76,7 @@ def toCSV(df):
 def moreReviews(df):
     # Appending more reviews to our dataset to help with modeling
     # https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv
-    path2 = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/amazon_reviews.csv"
+    path2 = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/more_reviews.csv"
     moreData = pd.read_csv(path2)
     moreData = moreData[['overall', 'reviewText']]
     # Add a  column 'Title' with null values
@@ -89,9 +89,9 @@ def moreReviews(df):
     df = df._append(moreData, ignore_index=True)
     # Create a RecordID column for indexing
     N = len(df)
-    df['RecordID'] = range(1, N + 1)
-    # Next, rearrange the columns so that "RecordID" is the first column
-    df = df[['RecordID'] + [col for col in df.columns if col != 'RecordID']]
+    df['ID'] = range(1, N + 1)
+    # Next, rearrange the columns so that "ID" is the first column
+    df = df[['ID'] + [col for col in df.columns if col != 'ID']]
     return df
     
 if __name__ == '__main__':

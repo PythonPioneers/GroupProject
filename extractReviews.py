@@ -60,11 +60,6 @@ def format(results):
     df['rating'] = df['rating'].str.replace(' out of 5 stars', '').str.replace('.0', '')
     # Rename the columns and reorder them
     df = df.rename(columns={'title': 'Title', 'body': 'Comment', 'rating': 'Rating'})
-    # Create a RecordID column for indexing
-    N = len(df)
-    df['RecordID'] = range(1, N + 1)
-    # Next, rearrange the columns so that "RecordID" is the first column
-    df = df[['RecordID'] + [col for col in df.columns if col != 'RecordID']]
     return df
 
 def toCSV(df):
@@ -77,6 +72,27 @@ def toCSV(df):
     else:
         # If the file doesn't exist, create a new CSV file
         df.to_csv(path, index=False)
+
+def moreReviews(df):
+    # Appending more reviews to our dataset to help with modeling
+    # https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv
+    path2 = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/amazon_reviews.csv"
+    moreData = pd.read_csv(path2)
+    moreData = moreData[['overall', 'reviewText']]
+    # Add a  column 'Title' with null values
+    moreData['Title'] = None
+    # Reorder columns to place 'Title' as the first column
+    moreData = moreData[['Title'] + [col for col in moreData.columns if col != 'Title']]
+    # Rename the columns
+    moreData = moreData.rename(columns={'Title': 'Title', 'reviewText': 'Comment', 'overall': 'Rating'})
+    # Append moreData to InitialData
+    df = df._append(moreData, ignore_index=True)
+    # Create a RecordID column for indexing
+    N = len(df)
+    df['RecordID'] = range(1, N + 1)
+    # Next, rearrange the columns so that "RecordID" is the first column
+    df = df[['RecordID'] + [col for col in df.columns if col != 'RecordID']]
+    return df
     
 if __name__ == '__main__':
     # Read csv of asin codes and store them
@@ -95,5 +111,10 @@ if __name__ == '__main__':
         print(asin)
     # Format results into a dataframe
     df = format(results)
+    # Append more reviews from Kaggle
+    final_df = moreReviews(df)
     # Export results to csv
-    toCSV(df)
+    toCSV(final_df)
+    print(df)
+
+    

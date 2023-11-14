@@ -115,6 +115,3 @@ if __name__ == '__main__':
     final_df = moreReviews(df)
     # Export results to csv
     toCSV(final_df)
-    print(df)
-
-    

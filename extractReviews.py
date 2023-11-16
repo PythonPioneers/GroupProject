@@ -23,14 +23,14 @@ class Reviews:
         r = self.session.get(self.url)
         return r.html.find('div[data-hook="review"]')
 
-    def parse(self, reviews):
+    def parse(self, reviews, asin):
         # Store title, ratings, and body data into total tuple
         total = []
         for review in reviews:
             title = review.find('a[data-hook="review-title"]', first=True).text
             rating = review.find('i[data-hook="review-star-rating"] span', first=True).text
             body = review.find('span[data-hook="review-body"] span', first=True).text.replace('\n', '').strip()
-            data = {'title': title,'rating': rating,'body': body[:100]}
+            data = {'title': title,'rating': rating,'body': body[:100], 'asin_number': asin}
             total.append(data)
         return total
     
@@ -76,8 +76,8 @@ def toCSV(df):
 def moreReviews(df):
     # Appending more reviews to our dataset to help with modeling
     # https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv
-    path2 = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/more_reviews.csv"
-    moreData = pd.read_csv(path2)
+    path = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/more_reviews.csv"
+    moreData = pd.read_csv(path)
     moreData = moreData[['overall', 'reviewText']]
     # Add a  column 'Title' with null values
     moreData['Title'] = None
@@ -106,7 +106,7 @@ if __name__ == '__main__':
         # Locate the review page
         reviews = product.locate()
         # Crawl and store the product reviews
-        results.append(product.parse(reviews))
+        results.append(product.parse(reviews, asin))
         # Print product ID
         print(asin)
     # Format results into a dataframe

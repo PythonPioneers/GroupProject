@@ -40,8 +40,8 @@ def get_reviews(soup):
 
 # Function 3: loop through 1:x many pages, or until the css selector found only on the last page is found (when the next page button is greyed)
 for i in range(1, 2):
-    asin = 'B08N5LNQCX'
-    soup = get_soup(f'https://www.amazon.com/product-reviews/{asin}/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_review&sortBy=recent&pageNumber=1')
+    asin = 'B08N5N1WBH'
+    soup = get_soup(f'https://www.amazon.co.uk/product-reviews/{asin}/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_review&sortBy=recent&pageNumber=1')
     get_reviews(soup)
     print(len(reviewlist))
     if not soup.find('li', {'class': 'a-disabled a-last'}):

@@ -1,5 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+import nltk 
+import joblib
+
+model = joblib.load('/Users/ethanshen/Documents/UIUC/Fa23/CS410/GroupProject/unigram_xgboost_oversample.joblib')
+vectorizer = joblib.load('/Users/ethanshen/Documents/UIUC/Fa23/CS410/GroupProject/vectorizer.joblib')
+nltk.download('stopwords')
+stopwords = nltk.corpus.stopwords.words("english")
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
@@ -8,6 +15,8 @@ CORS(app, support_credentials=True)
 
 @app.route('/model_change', methods=['POST'])
 @cross_origin(supports_credentials=True)
+
+
 def your_endpoint():
     try:
         data = request.get_json()
@@ -16,8 +25,11 @@ def your_endpoint():
         rating = data["Rating"]
         title = data["title"]
         # the data is in a json for one review, and the variables are shown here implement model stuff here
-        print(id, comment, rating, title)
-        return data
+        input_vector = vectorizer.transform([comment])
+        prediction = model.predict(input_vector)
+        
+        # print(id, comment, rating, title)
+        return prediction
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

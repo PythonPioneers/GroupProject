@@ -27,9 +27,16 @@ def your_endpoint():
         # the data is in a json for one review, and the variables are shown here implement model stuff here
         input_vector = vectorizer.transform([comment])
         prediction = model.predict(input_vector)
+        assert prediction in [0,1,2]
+        if prediction == 0:
+            return 'Negative'
+        elif prediction == 1:
+            return 'Neutral'
+        elif prediction == 2:
+            return 'Positive'
         
         # print(id, comment, rating, title)
-        return prediction
+        #return prediction
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

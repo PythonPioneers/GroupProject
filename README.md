@@ -11,7 +11,7 @@ Our group project has three stages done asynchronically. Each stage decides the 
 
 ## 1. Web scraping
 
-We used the Python package beautifulsoup to extract data from HTML pages into .csv files with the following details:
+We used the Python package requests_html to extract data from HTML pages into .csv files with the following details:
 
 - ID
 - Title

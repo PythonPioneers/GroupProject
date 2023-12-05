@@ -1,4 +1,4 @@
-/**  since this is a regular js file, we have to import React into the file to make sure the required functionality can be used
+/** since this is a regular js file, we have to import React into the file to make sure the required functionality can be used
  * axios is a library that allows for calling of rest APIs from the frontend 
  * */
 import React, { useState } from 'react';

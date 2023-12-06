@@ -9,7 +9,7 @@ Our group project has three stages done asynchronically. Each stage decides the 
 2. Data processing and Model building: the reviews data were preprocessed into trainable/testable data to feed into a model. We tried different hyperparameters to tune up the models until we had a good evaluation score.
 3. User Interface: integrating the pre-trained model from step 2 we build a UI that take input of a review and gives instant feedback about sentiment of that review
 
-## 1. Web scraping
+## 1. Web Scraping
 
 We used Python packages requests_html and pandas to extract data from HTML pages into a .csv file with the following details:
 
@@ -20,7 +20,7 @@ We used Python packages requests_html and pandas to extract data from HTML pages
 
 extractReviews.py scrapes 300 unique products on Amazon and extracts roughly 3,000 user reviews (10 per product) into reviews.csv. Additionally, we append roughly 5,000 more user reviews from more_reviews.csv (https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv) into the main review csv. 
 
-## 2. Data Mining and Model building
+## 2. Data Mining and Model Building
 
 ### Data Preprocessing
 - Using panda methods to clean up and remove null data
@@ -40,13 +40,13 @@ extractReviews.py scrapes 300 unique products on Amazon and extracts roughly 3,0
 - Initial study of evaluation scores and prediction test shows some issue in our data. Because of the nature of online reviews, our data was heavily skewed and thus, resulting in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral)
 - We explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution proposed was to oversample the underrepresented categories based off proper IDF approach.
 
-### Retraining and re-evaluating
+### Retraining and Re-evaluating
 - Repeating the Regression Logistic Classifier and XGBoost for the newly balanced dataset
 
 ### Bigram Data Vectorization and 2 Classifiers
 - Repeating the above steps but with bigram vectorizations. Tuning hyperparameters along the way.
 
-### Final evaluation and model selection
+### Final Evaluation and Model Selection
 - Based of confusion matrix table and evalation scores we select the better performing model and download its object.
 
 ## 3. User Interface

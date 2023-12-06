@@ -50,5 +50,21 @@ extractReviews.py scrapes 300 unique products on Amazon and extracts roughly 3,0
 - Based of confusion matrix table and evalation scores we select the better performing model and download its object.
 
 ## 3. User Interface
-- Using flask we build our UI and integrate the above model object to process the manual input from user and output the sentiment feedback.
+### Frontend
+
+We built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model
+
+#### Components 
+- Form: The form allows a user to submit the review and is the container for the different components on the page
+- Labels: Tells the user what to input in which textbox or dropdown element
+- Textboxes: These are for the user to input text that will then be passed to the model
+- Dropdown: Similar function to the textboxes
+- Background Color: This is changed based on the output that the model gives, Positive: Green, Neutral: Yellow, Negative: Red
+
+### Backend 
+
+A backend was built using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response be sent back to the frontend
+
+#### Endpoints
+- /model_change (POST) - This calls the model and sends the user's comment through to determine the sentiment of the comment
 

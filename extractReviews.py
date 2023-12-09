@@ -18,13 +18,15 @@ class Reviews:
                             }
         self.url = f'https://www.amazon.co.uk/product-reviews/{self.asin}/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_review&sortBy=recent&pageNumber=1'
 
+
+    # Create session with respective URL
     def locate(self):
-        # Create session with respective URL
         r = self.session.get(self.url)
         return r.html.find('div[data-hook="review"]')
 
+
+    # Store title, ratings, and body data into total tuple
     def parse(self, reviews, asin):
-        # Store title, ratings, and body data into total tuple
         total = []
         for review in reviews:
             title = review.find('a[data-hook="review-title"]', first=True).text
@@ -34,8 +36,9 @@ class Reviews:
             total.append(data)
         return total
     
+
+# Read the list of products from the CSV file
 def read():
-    # Read the list of products from the CSV file
     products = []
     with open("/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/asin.csv", 'r', newline='') as file:
         reader = csv.reader(file)
@@ -43,6 +46,7 @@ def read():
         for row in reader:
              products.append(row[0])
     return products
+
 
 def format(results):
     # Create an empty DataFrame
@@ -62,19 +66,9 @@ def format(results):
     df = df.rename(columns={'title': 'Title', 'body': 'Comment', 'rating': 'Rating'})
     return df
 
-def toCSV(df):
-    # Write the DataFrame to a CSV file
-    path = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/data.csv"
-    # Check if the CSV file already exists
-    if os.path.isfile(path):
-        # If the file exists, append data to the existing file
-        df.to_csv(path, mode='a', header=False, index=False)
-    else:
-        # If the file doesn't exist, create a new CSV file
-        df.to_csv(path, index=False)
 
+# Appending more reviews to our dataset to help with modeling
 def moreReviews(df):
-    # Appending more reviews to our dataset to help with modeling
     # https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv
     path = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/more_reviews.csv"
     moreData = pd.read_csv(path)
@@ -93,6 +87,19 @@ def moreReviews(df):
     # Next, rearrange the columns so that "ID" is the first column
     df = df[['ID'] + [col for col in df.columns if col != 'ID']]
     return df
+
+
+# Write the DataFrame to a CSV file
+def toCSV(df):
+    path = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/data.csv"
+    # Check if the CSV file already exists
+    if os.path.isfile(path):
+        # If the file exists, append data to the existing file
+        df.to_csv(path, mode='a', header=False, index=False)
+    else:
+        # If the file doesn't exist, create a new CSV file
+        df.to_csv(path, index=False)
+    
     
 if __name__ == '__main__':
     # Read csv of asin codes and store them

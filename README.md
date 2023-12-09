@@ -25,8 +25,8 @@ A marketing or product research personel or department can integrate this tool t
 - XGBoost Model:
 - Flask:
 
-### Delivery Package 
-- The main deliverable of this project is .
+### Delivery Tool 
+- The main deliverable of this project is the UI application (?).
 - We also have the model building and evaluation steps in the provided python notebooks SentimentAnalysis.ipynb.
 - All the project files are contained in the **Group Project** folder and its subfolder of this project
 >>- Data folder with crawled reviews from different 
@@ -39,6 +39,7 @@ A marketing or product research personel or department can integrate this tool t
 
 ### How to use
 
+Ajay please add some screenshots and quick instruction steps.
 
 ### Code Walk through
 

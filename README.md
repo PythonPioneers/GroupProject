@@ -61,7 +61,9 @@ A marketing or product research personel or department can integrate this tool t
 
 ![alt text](npmrunstart.png)
 
-#### Now the frontend will launch and reviews can be fed in
+#### Now the frontend will launch and reviews can be fed in it will look like below
+
+![alt text](ui.png)
 
 ### Code Walk through
 

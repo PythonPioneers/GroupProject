@@ -38,6 +38,8 @@ A marketing or product research personel or department can integrate this tool t
 >>- vectorizer.joblib
 
 ### How to use
+
+
 ### Code Walk through
 
 **extractReviews.py**
@@ -50,33 +52,12 @@ A marketing or product research personel or department can integrate this tool t
 
 
 **SentimentAnalysis.ipynb**
-*** Data Mining and Model Building
-Data Preprocessing
-- Using panda methods to clean up and remove null data
-- Using nltk corpus of stopwords to remove stop words in our data
-
-*** Unigram Data Vectorization
-- Using sklearn vectorization packages we convert our data into unigram vector. This sklearn package already includes TF and IDF.
-- sklearn also used to split data into train and test sets.
-
-*** Logistic Regression Classifier
-- Using sklearn logistic regression classifier object to fit our training data, test on test set, and produce our first evaluation of this classifier.
-
-*** XGBoost Data Feeding and Model Training
-- Using Python feature XGBoost to read the data and train with XGB classifier as well evaluation results.
-
-*** Initial Evaluation
-- Initial study of evaluation scores and prediction test shows some issue in our data. Because of the nature of online reviews, our data was heavily skewed and thus, resulting in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral)
-- We explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution proposed was to oversample the underrepresented categories based off proper IDF approach.
-
-*** Retraining and Re-evaluating
-- Repeating the Regression Logistic Classifier and XGBoost for the newly balanced dataset
-
-*** Bigram Data Vectorization and 2 Classifiers
-- Repeating the above steps but with bigram vectorizations. Tuning hyperparameters along the way.
-
-*** Final Evaluation and Model Selection
-- Based of confusion matrix table and evalation scores we select the better performing model and download its object.
+- Data Mining and Model Building: Data Preprocessing - we used pandas methods to clean up and remove null data and use nltk corpus of stopwords to remove stop words in our data.
+- Unigram Data Vectorization with sklearn vectorization packages, we convert our data into unigram vectors. This sklearn package already includes TF and IDF. sklearn was also used to split data into train and test sets.
+- Logistic Regression Classifier: Using sklearn logistic regression classifier object to fit our training data, test on test set, and produce our first evaluation of this classifier.
+- XGBoost Data Feeding and Model Training: We use Python feature XGBoost to read the data and train with XGB classifier as well evaluation results.
+- Bigram Data Vectorization and 2 Classifiers: Repeating the above steps but with bigram vectorizations. Tuning hyperparameters along the way.
+- Evaluation using different python packages that help with F1 score calculation as well confusion matrices. Based on these evaluations, we choose the best performing model as well as language models (unigram or bigram) and export the object of that analysis model together with the vectorization object to use for the backend in our UI application.
 
 **backend.py**
 - blah blah
@@ -89,95 +70,34 @@ Data Preprocessing
 
 ## Team contributions
 ### Requirement analysis and evaluation of toolkits for this project
-- Our team conducted a number of brainstorming sessions to develop a complete idea for our project to meet the group project requirements and also a project feasibility.
-- *Dan* proposed & took spaCy toolkit through evaluation for this project implementation and tech review
-- *Gassan* proposed & took NLTK toolkit through evaluation for this project implementation and tech review
-- *Ved* performed evaluation of MetaPy to complete perspective and ensure the right selection of tool happens based on text mining capabilities suited for the implementation.  
-- Based on the output of evaluation & individual POC implementations, spaCy won hands-down due to powerful, scalable features complemented with the machine-learning capabilities for the potential enhancements 
+- Our team conducted a number of brainstorming sessions to develop a complete idea for our project to meet the group project requirements and also to conclude a project plan.
+- *Matt* proposed the integrated crawler and UI/Chrome extension on which we discussed the feasibility considering the potential challenges and time constraints. We analyzed this topic and concluded it was suitable for the course requirements, knowledge scope and also motivating for us to work on.
 
 ### Dataset selection and preparation
-- We selected 25,000 uniform randomly selected e-mails from the entire bank of Enron email corpus
-- After data wrangling and cleaning efforts, each of us picked 300 distinct emails for the manual classification of emails into important and unimportant categories for training and evaluation of the classifier
-- We chose to utilize the whole set of 25,000 emails for summarization module
+- *Matt* initiated the data crawling effort, he looked up different techniques for web crawling and made a decision to go with `beautifulsoup`, he tested crawling on different websites including Amazon.com, YouTube.com, etc. He faced an issue with crawling authority and permission.........  He was able to obtain a few intial sets of reviews, from which he further reviewed and completed his code with team support.
+- We decided to proceed with the selected 5,000 reviews from Amazon.
+- After data preprocessing and initial evaluation, we added <number> reviews from Amazon.
+- We later utilized this combined of initial data and extra data, as well as did oversampling for a total of balanced  <number> reviews for splitting into train and test sets to tune our model.
 
 ### Implementation 
-- We collectively selected spaCy implementation of classifier by *Dan* to collaboratively develop upon, mainly due to the simplicity and yet powerful features spaCy offered
-- *Ved* manually tested the package of classifier and summarizer through introduction.ipynb as a wrapper and one set of manually categorized 300 emails. Noted and shared the observations with the team.  
-- *Gassan* wrote an evaluation module to evaluate the result of classifier to quantitatively measure the accuracy and precision of the classifier
-- Testing & evaluation feedback provided inputs for finetuning of classifier and summarizer which *Dan* incorporated into the code
+- *Huyen* initiated the data preprocessing, vectorization, language model setup and model building by researching and experimenting with different models including multinomial Native Bayes and linear models, including logistic regression, on different packages including nltk and sklearn. She finished a preliminary set of results which revealed an issue of data heavily skewed on positive sentiments. This resulted in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral). The team gave individual feedbacks on this and proposed different resolutions.
+- *Ethan* took up the next part of model building and tuning. Firstly he explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution tested was to oversample the underrepresented categories based off proper IDF approach, which proves quite effective for our purpose. He also added XGBoost model to the list of models to explore in this exercise. He retrained and re-evaluated all the models on the newly updated data. He made the final decision on using XGBoost model and its object for the backend for our next UI step.
 
-## Potential Enhancements
-- Integrate with the Mailbox and show summary of top important emails in specific time period: week/month
-- List of important/top contacts based on frequent senders/receivers that has important email content 
-- Suggestions on de-registering from distribution lists
-- Suggestions on email templates based on common phrases/formats used frequently
+### UI Application 
+- *Ajay* built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model. He then build a backend using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response be sent back to the frontend
 
-
-
-Sentiment Analysis Feedback from Reviews
-
-## Components
-
-Our group project has three stages done asynchronically. Each stage decides the next, as follows:
-1. Web scraping: reviews were scraped from Amazon products.
-2. Data processing and Model building: the reviews data were preprocessed into trainable/testable data to feed into a model. We tried different hyperparameters to tune up the models until we had a good evaluation score.
-3. User Interface: integrating the pre-trained model from step 2 we build a UI that take input of a review and gives instant feedback about sentiment of that review
-
-## 1. Web Scraping
-Using Python packages requests_html and pandas to extract data from HTML pages into a .csv file with the following details:
-
-- Title: Title of Review
-- Rating: Rating of Review from 1-5
-- Comment: Body of the User Review
-- asin_number: Amazon Standard Identification Number (unique product code)
-  
-extractReviews.py scrapes 300 unique products on Amazon and extracts roughly 3,000 user reviews (10 per product) into reviews.csv. Additionally, we append roughly 5,000 more user reviews from more_reviews.csv (https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv) into the main review csv.
-
-## 2. Data Mining and Model Building
-
-### Data Preprocessing
-- Using panda methods to clean up and remove null data
-- Using nltk corpus of stopwords to remove stop words in our data
-
-### Unigram Data Vectorization
-- Using sklearn vectorization packages we convert our data into unigram vector. This sklearn package already includes TF and IDF.
-- sklearn also used to split data into train and test sets.
-
-### Logistic Regression Classifier
-- Using sklearn logistic regression classifier object to fit our training data, test on test set, and produce our first evaluation of this classifier.
-
-### XGBoost Data Feeding and Model Training
-- Using Python feature XGBoost to read the data and train with XGB classifier as well evaluation results.
-
-### Initial Evaluation
-- Initial study of evaluation scores and prediction test shows some issue in our data. Because of the nature of online reviews, our data was heavily skewed and thus, resulting in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral)
-- We explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution proposed was to oversample the underrepresented categories based off proper IDF approach.
-
-### Retraining and Re-evaluating
-- Repeating the Regression Logistic Classifier and XGBoost for the newly balanced dataset
-
-### Bigram Data Vectorization and 2 Classifiers
-- Repeating the above steps but with bigram vectorizations. Tuning hyperparameters along the way.
-
-### Final Evaluation and Model Selection
-- Based of confusion matrix table and evalation scores we select the better performing model and download its object.
-
-## 3. User Interface
-### Frontend
-
-We built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model
-
-#### Components 
+#### Frontend Components 
 - Form: The form allows a user to submit the review and is the container for the different components on the page
 - Labels: Tells the user what to input in which textbox or dropdown element
 - Textboxes: These are for the user to input text that will then be passed to the model
 - Dropdown: Similar function to the textboxes
 - Background Color: This is changed based on the output that the model gives, Positive: Green, Neutral: Yellow, Negative: Red
 
-### Backend 
-
-A backend was built using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response be sent back to the frontend
-
-#### Endpoints
+#### Backend Endpoints
 - /model_change (POST) - This calls the model and sends the user's comment through to determine the sentiment of the comment
+- Along the way, our group met multiple times over Zoom to discuss the most recent challenges and work together on a solution for each. We met a final time to work through all the steps, add comments, revise some small details and record our Demo video.
 
+## Potential Enhancements
+- Further development to do batch-processing in order to deal with larger set of data at the same time.
+- Recording the given data and preprocessing this newly added set of data to re-train our model automatically on a regular basis (depending on the frequency of input, once per month or once every quarter)
+- Automating the exporting and updating backend process to help facilitate the above-mentioned frequent update feature.

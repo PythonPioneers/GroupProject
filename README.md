@@ -124,14 +124,14 @@ Our group project has three stages done asynchronically. Each stage decides the 
 3. User Interface: integrating the pre-trained model from step 2 we build a UI that take input of a review and gives instant feedback about sentiment of that review
 
 ## 1. Web Scraping
-- Using Python packages requests_html and pandas to extract data from HTML pages into a .csv file with the following details:
+Using Python packages requests_html and pandas to extract data from HTML pages into a .csv file with the following details:
 
 - Title: Title of Review
 - Rating: Rating of Review from 1-5
 - Comment: Body of the User Review
 - asin_number: Amazon Standard Identification Number (unique product code)
   
-- extractReviews.py scrapes 300 unique products on Amazon and extracts roughly 3,000 user reviews (10 per product) into reviews.csv. Additionally, we append roughly 5,000 more user reviews from more_reviews.csv (https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv) into the main review csv.
+extractReviews.py scrapes 300 unique products on Amazon and extracts roughly 3,000 user reviews (10 per product) into reviews.csv. Additionally, we append roughly 5,000 more user reviews from more_reviews.csv (https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv) into the main review csv.
 
 ## 2. Data Mining and Model Building
 

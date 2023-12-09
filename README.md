@@ -41,7 +41,7 @@ A marketing or product research personel or department can integrate this tool t
 
 ### How to use
 #### Launch the backend
-- Launch a new terminal that is not running the frontend
+- Launch a new terminal 
 - Navigate to the GroupProject folder in the terminal
 - Install python 3 if you do not have it
 - [Install Python](https://www.python.org/downloads/)
@@ -49,6 +49,7 @@ A marketing or product research personel or department can integrate this tool t
 
 ![alt text](backend.png)
 #### Launch the UI 
+- Launch a new terminal that is not running the backend 
 - Navigate in your terminal to the frontend folder
 - If this is your first time running the code, make sure that you have node.js and npm installed on your machine
 - [Install NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)

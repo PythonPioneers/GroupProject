@@ -40,7 +40,7 @@ class Reviews:
 # Read the list of products from the CSV file
 def read():
     products = []
-    with open("/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/asin.csv", 'r', newline='') as file:
+    with open("/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/Data/asin.csv", 'r', newline='') as file:
         reader = csv.reader(file)
         next(reader)  # Skip the header row
         for row in reader:
@@ -70,7 +70,7 @@ def format(results):
 # Appending more reviews to our dataset to help with modeling
 def moreReviews(df):
     # https://www.kaggle.com/datasets/tarkkaanko/amazon?select=amazon_reviews.csv
-    path = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/more_reviews.csv"
+    path = "/Users/mattmacrides/OneDrive - University of Illinois - Urbana/CS 410 - Text Information Systems/GroupProject/Data/more_reviews.csv"
     moreData = pd.read_csv(path)
     moreData = moreData[['overall', 'reviewText']]
     # Add a  column 'Title' with null values
@@ -100,7 +100,7 @@ def toCSV(df):
         # If the file doesn't exist, create a new CSV file
         df.to_csv(path, index=False)
     
-    
+
 if __name__ == '__main__':
     # Read csv of asin codes and store them
     asins = read()

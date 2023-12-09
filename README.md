@@ -23,7 +23,8 @@ A marketing or product research personel or department can integrate this tool t
 - Python/NLP Packages: beautifulsoup,  [NumPy](http://www.numpy.org), [Pandas](https://pandas.pydata.org),
 - Logistic Regression model: 
 - XGBoost Model:
-- Flask:
+- Frontend Packages: [ReactJS](https://react.dev/), [TailwindCSS](https://tailwindui.com/)
+- Backend: [Flask](https://flask.palletsprojects.com/en/3.0.x/)
 
 ### Delivery Tool 
 - The main deliverable of this project is the UI application (?).
@@ -39,9 +40,9 @@ A marketing or product research personel or department can integrate this tool t
 >>- ???frontend code????
 
 ### How to use
-
-Ajay please add some screenshots and quick instruction steps.
-
+#### Launch the UI 
+- Navigate to the 
+![alt text]("npminstall.png")
 ### Code Walk through
 
 **extractReviews.py**

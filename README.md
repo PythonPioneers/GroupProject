@@ -36,6 +36,7 @@ A marketing or product research personel or department can integrate this tool t
 >>- extractReviews.py
 >>- unigram_xgboost_oversample.joblib
 >>- vectorizer.joblib
+>>- ???frontend code????
 
 ### How to use
 
@@ -69,6 +70,8 @@ Ajay please add some screenshots and quick instruction steps.
 **vectorizer.joblib**
 - extracted model vectors
 
+  ??? frontend code?
+
 ## Team contributions
 ### Requirement analysis and evaluation of toolkits for this project
 - Our team conducted a number of brainstorming sessions to develop a complete idea for our project to meet the group project requirements and also to conclude a project plan.
@@ -81,8 +84,8 @@ Ajay please add some screenshots and quick instruction steps.
 - We later utilized this combined of initial data and extra data, as well as did oversampling for a total of balanced  <number> reviews for splitting into train and test sets to tune our model.
 
 ### Implementation 
-- *Huyen* initiated the data preprocessing, vectorization, language model setup and model building by researching and experimenting with different models including multinomial Native Bayes and linear models, including logistic regression, on different packages including nltk and sklearn. She finished a preliminary set of results which revealed an issue of data heavily skewed on positive sentiments. This resulted in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral). The team gave individual feedbacks on this and proposed different resolutions.
-- *Ethan* took up the next part of model building and tuning. Firstly he explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution tested was to oversample the underrepresented categories based off proper IDF approach, which proves quite effective for our purpose. He also added XGBoost model to the list of models to explore in this exercise. He retrained and re-evaluated all the models on the newly updated data. He made the final decision on using XGBoost model and its object for the backend for our next UI step.
+- *Huyen* initiated the data preprocessing, vectorization, language model setup and model building by researching and experimenting with different models including multinomial Native Bayes and linear models, including logistic regression, on different packages including nltk and sklearn, and some trial unigram and bigram vectorization. She finished a preliminary set of results which revealed an issue of data heavily skewed on positive sentiments. This resulted in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral). The team gave individual feedbacks on this and proposed different resolutions.
+- *Ethan* took up the next part of model building and tuning. Firstly he explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution tested was to oversample the underrepresented categories based off proper IDF approach, which proves quite effective for our purpose. He also added XGBoost model to the list of models to explore in this exercise. He retrained and re-evaluated all the models on the newly updated data. He studied the evaluation results and shared his thoughts with the team, who all discussed the score and how to proceed next. He then made the final decision on using XGBoost model and its object for the backend for our next UI step.
 
 ### UI Application 
 - *Ajay* built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model. He then build a backend using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response be sent back to the frontend

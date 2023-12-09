@@ -40,9 +40,28 @@ A marketing or product research personel or department can integrate this tool t
 >>- ???frontend code????
 
 ### How to use
+#### Launch the backend
+- Launch a new terminal that is not running the frontend
+- Navigate to the GroupProject folder in the terminal
+- Install python 3 if you do not have it
+- [Install Python](https://www.python.org/downloads/)
+- Run the command "python3 backend.py"
+
+![alt text](backend.png)
 #### Launch the UI 
-- Navigate to the 
-![alt text]("npminstall.png")
+- Navigate in your terminal to the frontend folder
+- If this is your first time running the code, make sure that you have node.js and npm installed on your machine
+- [Install NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- Still only do this if it is your first time running the code, run the command "npm install" as seen below 
+
+![alt text](npminstall.png)
+
+- Once the previous step is run, every time in order to run the UI run the command "npm run start"
+
+![alt text](npmrunstart.png)
+
+#### Now the frontend will launch and reviews can be fed in
+
 ### Code Walk through
 
 **extractReviews.py**

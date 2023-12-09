@@ -91,7 +91,7 @@ def moreReviews(df):
 
 # Write the DataFrame to a CSV file
 def toCSV(df):
-    path = "Data/reviewsss.csv"
+    path = "Data/reviews.csv"
     # Check if the CSV file already exists
     if os.path.isfile(path):
         # If the file exists, append data to the existing file

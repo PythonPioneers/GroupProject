@@ -83,7 +83,9 @@ A marketing or product research personel or department can integrate this tool t
 - Evaluation using different python packages that help with F1 score calculation as well confusion matrices. Based on these evaluations, we choose the best performing model as well as language models (unigram or bigram) and export the object of that analysis model together with the vectorization object to use for the backend in our UI application.
 
 **backend.py**
-- blah blah
+- Imports: Flask and Flask Cors which allows for the launch of the server and the connection on the browser
+- Model and Flask Declarations: Saved versions of the model were loaded into different variables and underneath it, Flask headers were then declared to make sure that server connection was made. 
+- Endpoint: This portion of the code calls the declared model and runs an individual review through the model to finish the sentiment analysis. The output of the model is then returned
 
 **unigram_xgboost_oversample.joblib**
 - extracted model object
@@ -91,7 +93,13 @@ A marketing or product research personel or department can integrate this tool t
 **vectorizer.joblib**
 - extracted model vectors
 
-  ??? frontend code?
+**ThreeBox.js**
+- Holds the majority of the frontend code that is being displayed
+- Contains a form that when submitted  with the button will ping the backend model
+- Renders a different color on the output screen when the output is changed
+
+**Header.js**
+- Contains the code for the header bar that is present on the rendered screen
 
 ## Team contributions
 ### Requirement analysis and evaluation of toolkits for this project
@@ -109,7 +117,7 @@ A marketing or product research personel or department can integrate this tool t
 - *Ethan* took up the next part of model building and tuning. Firstly he explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution tested was to oversample the underrepresented categories based off proper IDF approach, which proves quite effective for our purpose. He also added XGBoost model to the list of models to explore in this exercise. He retrained and re-evaluated all the models on the newly updated data. He studied the evaluation results and shared his thoughts with the team, who all discussed the score and how to proceed next. He then made the final decision on using XGBoost model and its object for the backend for our next UI step.
 
 ### UI Application 
-- *Ajay* built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model. He then build a backend using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response be sent back to the frontend
+- *Ajay* built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model. He then build a backend using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response to be sent back to the frontend
 
 #### Frontend Components 
 - Form: The form allows a user to submit the review and is the container for the different components on the page

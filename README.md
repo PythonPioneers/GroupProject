@@ -20,7 +20,7 @@ A marketing or product research personel or department can integrate this tool t
   
 ## System requirements and Usage
 ### Pre-requisites
-- Python/NLP Packages: beautifulsoup,  [NumPy](http://www.numpy.org), [Pandas](https://pandas.pydata.org),
+- Python/NLP Packages: requests_html,  [NumPy](http://www.numpy.org), [Pandas](https://pandas.pydata.org),
 - Logistic Regression model: 
 - XGBoost Model:
 - Frontend Packages: [ReactJS](https://react.dev/), [TailwindCSS](https://tailwindui.com/)
@@ -109,7 +109,7 @@ A marketing or product research personel or department can integrate this tool t
 - *Matt* proposed the integrated crawler and UI/Chrome extension on which we discussed the feasibility considering the potential challenges and time constraints. We analyzed this topic and concluded it was suitable for the course requirements, knowledge scope and also motivating for us to work on.
 
 ### Dataset selection and preparation
-- *Matt* initiated the data crawling effort, he looked up different techniques for web crawling and made a decision to go with `beautifulsoup`, he tested crawling on different websites including Amazon.com, YouTube.com, etc. He faced an issue with crawling authority and permission.........  He was able to obtain a few intial sets of reviews, from which he further reviewed and completed his code with team support.
+- *Matt* initiated the data crawling effort, he looked up different techniques for web crawling and made a decision to go with `requests_html`, he tested crawling on different websites including Amazon.com, YouTube.com, etc. He faced an issue with crawling authority and permission.........  He was able to obtain a few intial sets of reviews, from which he further reviewed and completed his code with team support.
 - We decided to proceed with the selected 5,000 reviews from Amazon.
 - After data preprocessing and initial evaluation, we added <number> reviews from Amazon.
 - We later utilized this combined of initial data and extra data, as well as did oversampling for a total of balanced  <number> reviews for splitting into train and test sets to tune our model.

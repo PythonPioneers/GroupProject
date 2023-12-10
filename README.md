@@ -109,10 +109,10 @@ A marketing or product research personel or department can integrate this tool t
 - *Matt* proposed the integrated crawler and UI/Chrome extension on which we discussed the feasibility considering the potential challenges and time constraints. We analyzed this topic and concluded it was suitable for the course requirements, knowledge scope and also motivating for us to work on.
 
 ### Dataset selection and preparation
-- *Matt* initiated the data crawling effort, he looked up different techniques for web crawling and made a decision to go with `requests_html`, he tested crawling on different websites including Amazon.com, YouTube.com, etc. He faced an issue with crawling authority and permission.........  He was able to obtain a few intial sets of reviews, from which he further reviewed and completed his code with team support.
-- We decided to proceed with the selected 5,000 reviews from Amazon.
-- After data preprocessing and initial evaluation, we added <number> reviews from Amazon.
-- We later utilized this combined of initial data and extra data, as well as did oversampling for a total of balanced  <number> reviews for splitting into train and test sets to tune our model.
+- *Matt* initiated the data crawling effort, he looked up different techniques for web crawling and made a decision to go with `requests_html`, he tested crawling on different websites including Amazon.com, YouTube.com, etc. He faced an issue with crawling authority and permission where we could not scrape any reviews that weren't on the main/landing page. Therefore, he decided to scrape several hundred products rather than only scrape a few products deeply.
+- We decided to proceed with the selected 3,000 reviews from Amazon.
+- After data preprocessing and initial evaluation, we added an additional 5,000 reviews from Amazon that we found from Kaggle.
+- We later utilized this combined of initial data and extra data, for a total of 8,000 reviews used for our sentiment model.
 
 ### Implementation 
 - *Huyen* initiated the data preprocessing, vectorization, language model setup and model building by researching and experimenting with different models including multinomial Native Bayes and linear models, including logistic regression, on different packages including nltk and sklearn, and some trial unigram and bigram vectorization. She finished a preliminary set of results which revealed an issue of data heavily skewed on positive sentiments. This resulted in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral). The team gave individual feedbacks on this and proposed different resolutions.

@@ -20,9 +20,10 @@ A marketing or product research personel or department can integrate this tool t
   
 ## System requirements and Usage
 ### Pre-requisites
-- Python/NLP Packages: requests_html,  [NumPy](http://www.numpy.org), [Pandas](https://pandas.pydata.org),
-- Logistic Regression model: 
-- XGBoost Model:
+- Python/NLP Packages: [requests_html](https://pypi.org/project/requests-html/),  [NumPy](http://www.numpy.org), [Pandas](https://pandas.pydata.org), [beautifulsoup](https://pypi.org/project/beautifulsoup4/), [nltk](https://www.nltk.org/), [matplotlib](https://matplotlib.org/)
+- sklearn including vectorization and linear models: [scikitlearn](https://scikit-learn.org/stable/)
+- XGBoost Model: [XGBoost](https://xgboost.readthedocs.io/en/stable/python/python_intro.html)
+- Model extractor: [joblib](https://joblib.readthedocs.io/en/stable/)
 - Frontend Packages: [ReactJS](https://react.dev/), [TailwindCSS](https://tailwindui.com/)
 - Backend: [Flask](https://flask.palletsprojects.com/en/3.0.x/)
 
@@ -37,7 +38,7 @@ A marketing or product research personel or department can integrate this tool t
 >>- extractReviews.py
 >>- unigram_xgboost_oversample.joblib
 >>- vectorizer.joblib
->>- ???frontend code????
+>>- frontend js files
 
 ### How to use
 #### Launch the backend
@@ -119,7 +120,7 @@ A marketing or product research personel or department can integrate this tool t
 - *Ethan* took up the next part of model building and tuning. Firstly he explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution tested was to oversample the underrepresented categories based off proper IDF approach, which proves quite effective for our purpose. He also added XGBoost model to the list of models to explore in this exercise. He retrained and re-evaluated all the models on the newly updated data. He studied the evaluation results and shared his thoughts with the team, who all discussed the score and how to proceed next. He then made the final decision on using XGBoost model and its object for the backend for our next UI step.
 
 ### UI Application 
-- *Ajay* built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model. He then build a backend using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response to be sent back to the frontend
+- *Ajay* built a frontend component in ReactJS that allows a user to manually feed in any review and then submit the review to be analyzed by the model. He then built a backend using Flask that allowed for the comment from the frontend to be passed through and analyzed and then the response to be sent back to the frontend. Details as follows:
 
 #### Frontend Components 
 - Form: The form allows a user to submit the review and is the container for the different components on the page

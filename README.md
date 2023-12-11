@@ -15,8 +15,8 @@ A marketing or product research personel or department can integrate this tool t
 ## Background/Problem Statement:
 - Technical errors or user mistakes can lead to reviews not matching the ratings given on a product/service.
 - Sentimental analysis model can be time consuming to build, and getting proper dataset to train the model can be challenging.
-- We also notice a general skewing trend in the positive versus negative or neutral reviews so the get a balanced learning is another challenge.
-- It would be useful to have a ready-to-use application that employs a model which has been trained and evaluated at relatively high performance score, to obtain instant sentimental feedback on the given review. Based on this it can open door to developing higher capacity application to batch-process reviews.
+- We also notice a general skewing trend in the positive versus negative or neutral reviews so to get a balanced learning is another challenge.
+- It would be useful to have a ready-to-use application that employs a model which has been trained and evaluated at relatively high performance score, to obtain instant sentimental feedback on the given review. Based on this it can open door to developing higher capacity application to batch-process reviews and more.
   
 ## System requirements and Usage
 ### Pre-requisites
@@ -28,9 +28,9 @@ A marketing or product research personel or department can integrate this tool t
 - Backend: [Flask](https://flask.palletsprojects.com/en/3.0.x/)
 
 ### Delivery Tool 
-- The main deliverable of this project is the UI application (?).
+- The main deliverable of this project is the UI application.
 - We also have the model building and evaluation steps in the provided python notebooks SentimentAnalysis.ipynb.
-- All the project files are contained in the **Group Project** folder and its subfolder of this project
+- All the project files are contained in the **Group Project** folder and its subfolders
 >>- Data folder with crawled reviews from different 
 >>- README.md
 >>- SentimentAnalysis.ipynb
@@ -116,7 +116,7 @@ A marketing or product research personel or department can integrate this tool t
 - We later utilized this combined of initial data and extra data, for a total of 8,000 reviews used for our sentiment model.
 
 ### Implementation 
-- *Huyen* initiated the data preprocessing, vectorization, language model setup and model building by researching and experimenting with different models including multinomial Native Bayes and linear models, including logistic regression, on different packages including nltk and sklearn, and some trial unigram and bigram vectorization. She finished a preliminary set of results which revealed an issue of data heavily skewed on positive sentiments. This resulted in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral). The team gave individual feedbacks on this and proposed different resolutions.
+- *Huyen* initiated the data preprocessing, vectorization, language model setup and model building by researching and experimenting with different models including multinomial Naive Bayes and linear models, including logistic regression, on different packages including nltk and sklearn, and some trial unigram and bigram vectorization. She finished a preliminary set of results which revealed an issue of data heavily skewed on positive sentiments. This resulted in high precision and recall for skewed category (Positive) but very low for the other two categories (Negative and Neutral). The team gave individual feedbacks on this and proposed different resolutions.
 - *Ethan* took up the next part of model building and tuning. Firstly he explored some resolutions for this skewed data issue: by generating more data while eliminating some positive reviews to balance out data in all categories. Another solution tested was to oversample the underrepresented categories based off proper IDF approach, which proves quite effective for our purpose. He also added XGBoost model to the list of models to explore in this exercise. He retrained and re-evaluated all the models on the newly updated data. He studied the evaluation results and shared his thoughts with the team, who all discussed the score and how to proceed next. He then made the final decision on using XGBoost model and its object for the backend for our next UI step.
 
 ### UI Application 
